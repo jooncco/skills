@@ -65,9 +65,11 @@ allowed-tools: [Read, Write, Edit, Bash]
 
 ### 스크립트는 자립시킨다
 
-`uv run --script` 셔뱅과 PEP 723 인라인 의존성을 쓰면 설치 절차도, 가상환경도
-필요 없다. 링크된 어느 프로젝트에서 실행되든 동작해야 하므로, 특정 프로젝트의
-`.venv` 나 전역 패키지에 기대지 않는다.
+스킬은 링크로 설치되므로 **어느 프로젝트에서 실행될지 모른다.** 그 프로젝트에
+`.venv` 가 있는지, 거기에 필요한 패키지가 깔려 있는지 알 수 없다. 그러니 스크립트가
+필요한 것을 스스로 챙기게 만든다.
+
+파이썬이라면 [`uv`](https://docs.astral.sh/uv/) 가 이걸 두 줄로 해결한다:
 
 ```python
 #!/usr/bin/env -S uv run --script
@@ -75,7 +77,33 @@ allowed-tools: [Read, Write, Edit, Bash]
 # requires-python = ">=3.11"
 # dependencies = ["pillow>=10.0"]
 # ///
+
+from PIL import Image   # 설치한 적 없어도 그냥 된다
 ```
+
+**첫 줄이 셔뱅(shebang)이다.** 파일을 실행하면 OS 가 맨 앞 두 글자 `#!` 를 보고,
+그 줄의 나머지를 "이 파일을 처리할 명령"으로 삼는다.
+
+| 조각 | 뜻 |
+|---|---|
+| `#!` | "아래 명령으로 이 파일을 실행해라". 반드시 **1번째 줄**이어야 한다 |
+| `/usr/bin/env` | 프로그램을 `PATH` 에서 찾아준다. `uv` 가 어디 깔렸든 상관없어진다 |
+| `-S` | 뒤에 인자를 여러 개 넘기게 해준다. 없으면 `env` 가 `"uv run --script"` 전체를 프로그램 **이름 하나**로 읽고 실패한다 |
+| `uv run --script` | 아래 `# /// script` 블록을 읽어 임시 환경을 만들고 실행한다 |
+
+그 아래 주석 블록이 [PEP 723](https://peps.python.org/pep-0723/) 형식의 의존성
+선언이다. 파이썬 버전과 필요한 패키지를 파일 안에 적어두면, uv 가 실행할 때마다
+맞는 환경을 준비한다(한 번 받아두면 캐시된다).
+
+결과적으로 이렇게 된다:
+
+```bash
+chmod +x scripts/my_script.py   # 한 번만
+./scripts/my_script.py          # 끝. python 도, pip install 도, venv 활성화도 없다
+```
+
+`requirements.txt` 도, 설치 안내도, "먼저 가상환경을 만드세요" 도 필요 없다.
+의존성이 코드 바로 위에 있으니 서로 어긋날 일도 없다.
 
 ### 지켜야 할 것
 
