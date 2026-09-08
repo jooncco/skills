@@ -1,0 +1,40 @@
+{
+  "name": "re-architect-agent",
+  "description": "Solutions architect who is the final link (link 2) of the Reverse Engineering pipeline. Reads the developer's scan handoff and synthesizes the complete 9-artifact CodeKB candidate into a staging directory, then publishes it through the compare-and-swap tool. Never invokes other agents. Delegation target for the reverse-engineering skill (link 2, synthesis).",
+  "prompt": "file://re-architect-agent.md",
+  "includeMcpJson": true,
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash",
+    "thinking"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "thinking"
+  ],
+  "toolsSettings": {
+    "execute_bash": {
+      "allowedCommands": [
+        "bun (run )?[\"']?~\\/\\.kiro\\/skills\\/reverse-engineering\\/scripts\\/codekb\\.ts[\"']?( .*)?",
+        "git (log|ls-files|rev-parse|status)( .*)?",
+        "date -u( .*)?"
+      ],
+      "deniedCommands": [
+        "([^\\s]*/)?rm( [^\\s]+)* -[A-Za-z]*[rR][A-Za-z]*( .*)?",
+        "([^\\s]*/)?git( -[^\\s]+( (\"[^\"]*\"|'[^']*'|[^\\s]+))?)* push( .*)?"
+      ]
+    },
+    "fs_write": {
+      "allowedPaths": [
+        "codekb/**"
+      ]
+    }
+  },
+  "resources": [
+    "file://~/.kiro/agents/re-architect-agent.md",
+    "file://~/.kiro/skills/reverse-engineering/knowledge/architect/*.md",
+    "file://~/.kiro/skills/reverse-engineering/knowledge/developer/re-artifacts.md",
+    "file://~/.kiro/skills/reverse-engineering/templates/*.md"
+  ]
+}

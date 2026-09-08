@@ -1,0 +1,11 @@
+{
+  "name": "Cursor",
+  "skillDir": ".cursor/skills/reverse-engineering",
+  "agentsDir": ".cursor/agents",
+  "invoke": "/reverse-engineering",
+  "agentFormat": "cursor",
+  "global": {
+    "skillDir": "~/.cursor/skills/reverse-engineering",
+    "agentsDir": "~/.cursor/agents"
+  }
+}

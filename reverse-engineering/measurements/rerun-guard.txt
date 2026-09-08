@@ -1,0 +1,25 @@
+### [1] store verdict before any source change
+{"repo":"after","store":"codekb/after/","verdict":"CURRENT","store_intent":"initial-onboarding","kind":"full","analyzed_paths":["./"],"store_fingerprint":"edc586fa596d3d445f0a553dbd01f16a65d7c7ae","current_fingerprint":"edc586fa596d3d445f0a553dbd01f16a65d7c7ae"}
+
+### [2] add one new source file (feature-work scenario)
+created services/api/routes/exports.py
+
+### [3] store verdict after the change -> STALE
+{"repo":"after","store":"codekb/after/","verdict":"STALE","store_intent":"initial-onboarding","kind":"full","analyzed_paths":["./"],"store_fingerprint":"edc586fa596d3d445f0a553dbd01f16a65d7c7ae","current_fingerprint":"3c00c469606c59b716c22669f50b7847611d8195"}
+
+### [4] a focused rescan narrower than the store -> NARROWER warning
+NARROWER: the incoming scope no longer claims verified deep coverage for:
+  - ./
+  components: triage_core, services.worker, tests, infra
+(store intent: initial-onboarding; incoming intent: add-csv-export)
+
+### [5a] publish with a stale store generation -> CODEKB_STORE_CHANGED
+CODEKB_STORE_CHANGED: expected none, found sha256:12054295b905b53230964c6689e1bd244d77a400b25e186424a6833d284d5c76. Re-read the current store, re-merge the staged scan, take a fresh snapshot, and retry.
+
+### [5b] correct store generation, stale source fingerprint -> CODEKB_SOURCE_CHANGED
+CODEKB_SOURCE_CHANGED: expected git:edc586fa596d3d445f0a553dbd01f16a65d7c7ae, found git:3c00c469606c59b716c22669f50b7847611d8195. Re-scan the affected source, re-synthesize all nine artifacts, take a fresh snapshot, and retry.
+
+### [6] every refusal left the store untouched
+{"repo":"after","store":"codekb/after/","verdict":"CURRENT","store_intent":"initial-onboarding","kind":"full","analyzed_paths":["./"],"store_fingerprint":"edc586fa596d3d445f0a553dbd01f16a65d7c7ae","current_fingerprint":"edc586fa596d3d445f0a553dbd01f16a65d7c7ae"}
+
+(temporary copy removed; the submission folder was never touched)

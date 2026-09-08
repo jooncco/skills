@@ -1,0 +1,18 @@
+stages: [lint, test, build]
+
+lint:
+  stage: lint
+  script:
+    - ruff check services packages
+
+test:
+  stage: test
+  script:
+    - pytest -q
+  # NOTE: coverage gate disabled since 2025-11 incident, re-enable later
+
+build:
+  stage: build
+  only: [main]
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .

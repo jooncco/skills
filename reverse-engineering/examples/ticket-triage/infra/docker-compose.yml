@@ -1,0 +1,14 @@
+services:
+  api:
+    build: .
+    ports: ["8080:8080"]
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - DB_URL=postgresql+psycopg://triage:triage@db:5432/triage
+  worker:
+    build: .
+    command: python -m services.worker.main
+  redis:
+    image: redis:7-alpine
+  db:
+    image: postgres:16-alpine

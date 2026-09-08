@@ -1,0 +1,11 @@
+{
+  "name": "Kiro IDE",
+  "skillDir": ".kiro/skills/reverse-engineering",
+  "agentsDir": ".kiro/agents",
+  "invoke": "/reverse-engineering",
+  "agentFormat": "kiro-ide",
+  "global": {
+    "skillDir": "~/.kiro/skills/reverse-engineering",
+    "agentsDir": "~/.kiro/agents"
+  }
+}

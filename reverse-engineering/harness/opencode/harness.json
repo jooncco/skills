@@ -1,0 +1,13 @@
+{
+  "name": "opencode",
+  "skillDir": ".opencode/skills/reverse-engineering",
+  "agentsDir": ".opencode/agents",
+  "invoke": "/reverse-engineering",
+  "agentFormat": "opencode",
+  "command": ".opencode/command/reverse-engineering.md",
+  "global": {
+    "skillDir": "~/.config/opencode/skills/reverse-engineering",
+    "agentsDir": "~/.config/opencode/agents",
+    "command": "~/.config/opencode/commands/reverse-engineering.md"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "label": "BEFORE (no skill)",
+  "docs_produced": 4,
+  "files": [
+    "docs/01-overview.md",
+    "docs/02-architecture.md",
+    "docs/03-code-structure.md",
+    "docs/README.md"
+  ],
+  "total_lines": 513,
+  "total_bytes": 27081,
+  "h2_sections": 18,
+  "mermaid_diagrams": 0,
+  "source_file_citations": 10,
+  "canonical_artifacts_present": 0,
+  "canonical_missing": [
+    "business-overview.md",
+    "architecture.md",
+    "code-structure.md",
+    "api-documentation.md",
+    "component-inventory.md",
+    "technology-stack.md",
+    "dependencies.md",
+    "code-quality-assessment.md",
+    "reverse-engineering-timestamp.md"
+  ],
+  "machine_readable_scope_block": false
+}

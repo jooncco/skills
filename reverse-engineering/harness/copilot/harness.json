@@ -1,0 +1,11 @@
+{
+  "name": "GitHub Copilot",
+  "skillDir": ".github/skills/reverse-engineering",
+  "agentsDir": ".github/agents",
+  "invoke": "/reverse-engineering",
+  "agentFormat": "copilot",
+  "global": {
+    "skillDir": "~/.copilot/skills/reverse-engineering",
+    "agentsDir": "~/.copilot/agents"
+  }
+}

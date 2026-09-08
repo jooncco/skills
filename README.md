@@ -10,6 +10,7 @@
 | 스킬 | 하는 일 |
 |---|---|
 | [`trading-journal`](trading-journal/) | 하루치 매매 스냅샷과 거래 내역으로 복기 노트를 만든다 |
+| [`reverse-engineering`](reverse-engineering/) | brownfield 코드베이스를 스캔해 `codekb/` 아래에 역공학 문서 9종을 만든다. 하네스 중립 `core/` 에서 Claude·Kiro·Codex·Cursor·opencode·Copilot 배포판을 생성하는 다중 하네스 번들 |
 
 각 스킬의 상세 사용법·필요 조건·설정은 해당 디렉터리의 `README.md` 에 있다.
 
@@ -29,6 +30,11 @@
 되돌릴 수 없는 유일한 것이다.
 
 인자 없이 실행하면 사용법과 스킬 목록이 나온다.
+
+`reverse-engineering` 은 예외다. 루트에 `SKILL.md` 가 없고 `core/` 소스에서 하네스별
+`dist/` 를 생성하는 구조라 `install.sh` 로 링크할 수 없다. 설치는 해당 디렉터리의
+`README.md` 대로 `dist/<harness>/` 안의 하네스 디렉터리를 프로젝트 루트(또는 홈)에
+`cp -R` 로 병합한다.
 
 ## 레이아웃
 

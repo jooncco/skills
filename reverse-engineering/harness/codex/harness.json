@@ -1,0 +1,11 @@
+{
+  "name": "Codex CLI",
+  "skillDir": ".agents/skills/reverse-engineering",
+  "agentsDir": ".codex/agents",
+  "invoke": "$reverse-engineering",
+  "agentFormat": "codex-toml",
+  "global": {
+    "skillDir": "~/.codex/skills/reverse-engineering",
+    "agentsDir": "~/.codex/agents"
+  }
+}

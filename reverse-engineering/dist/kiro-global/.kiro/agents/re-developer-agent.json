@@ -1,0 +1,38 @@
+{
+  "name": "re-developer-agent",
+  "description": "Senior developer who leads the Reverse Engineering code scan (pipeline link 1). Scans a repository and writes the structured Developer Code Scan handoff that the architect synthesizes into the 9 CodeKB artifacts. Never writes the artifacts itself and never invokes other agents. Delegation target for the reverse-engineering skill (link 1, code scan).",
+  "prompt": "file://re-developer-agent.md",
+  "includeMcpJson": true,
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash",
+    "thinking"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "thinking"
+  ],
+  "toolsSettings": {
+    "execute_bash": {
+      "allowedCommands": [
+        "bun (run )?[\"']?~\\/\\.kiro\\/skills\\/reverse-engineering\\/scripts\\/codekb\\.ts[\"']?( .*)?",
+        "git (log|ls-files|rev-parse|status)( .*)?",
+        "date -u( .*)?"
+      ],
+      "deniedCommands": [
+        "([^\\s]*/)?rm( [^\\s]+)* -[A-Za-z]*[rR][A-Za-z]*( .*)?",
+        "([^\\s]*/)?git( -[^\\s]+( (\"[^\"]*\"|'[^']*'|[^\\s]+))?)* push( .*)?"
+      ]
+    },
+    "fs_write": {
+      "allowedPaths": [
+        "codekb/**"
+      ]
+    }
+  },
+  "resources": [
+    "file://~/.kiro/agents/re-developer-agent.md",
+    "file://~/.kiro/skills/reverse-engineering/knowledge/developer/*.md"
+  ]
+}

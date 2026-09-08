@@ -1,0 +1,12 @@
+{
+  "name": "Claude Code",
+  "skillDir": ".claude/skills/reverse-engineering",
+  "agentsDir": ".claude/agents",
+  "invoke": "/reverse-engineering",
+  "agentFormat": "claude",
+  "skillFrontmatterExtra": "user-invocable: true",
+  "global": {
+    "skillDir": "~/.claude/skills/reverse-engineering",
+    "agentsDir": "~/.claude/agents"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "label": "AFTER (skill)",
+  "docs_produced": 9,
+  "files": [
+    "codekb/after/api-documentation.md",
+    "codekb/after/architecture.md",
+    "codekb/after/business-overview.md",
+    "codekb/after/code-quality-assessment.md",
+    "codekb/after/code-structure.md",
+    "codekb/after/component-inventory.md",
+    "codekb/after/dependencies.md",
+    "codekb/after/reverse-engineering-timestamp.md",
+    "codekb/after/technology-stack.md"
+  ],
+  "total_lines": 1511,
+  "total_bytes": 83352,
+  "h2_sections": 32,
+  "mermaid_diagrams": 6,
+  "source_file_citations": 94,
+  "canonical_artifacts_present": 9,
+  "canonical_missing": [],
+  "machine_readable_scope_block": true
+}

@@ -1,0 +1,23 @@
+{
+  "label": "AFTER run-2 (independent skill run)",
+  "docs_produced": 9,
+  "files": [
+    "codekb/before/api-documentation.md",
+    "codekb/before/architecture.md",
+    "codekb/before/business-overview.md",
+    "codekb/before/code-quality-assessment.md",
+    "codekb/before/code-structure.md",
+    "codekb/before/component-inventory.md",
+    "codekb/before/dependencies.md",
+    "codekb/before/reverse-engineering-timestamp.md",
+    "codekb/before/technology-stack.md"
+  ],
+  "total_lines": 2304,
+  "total_bytes": 142042,
+  "h2_sections": 47,
+  "mermaid_diagrams": 7,
+  "source_file_citations": 102,
+  "canonical_artifacts_present": 9,
+  "canonical_missing": [],
+  "machine_readable_scope_block": true
+}
